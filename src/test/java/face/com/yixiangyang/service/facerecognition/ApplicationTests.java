@@ -23,8 +23,8 @@ public class ApplicationTests {
 		String path = "F:\\dd/me.jpg";
 		String group = "group_1";
 	    String image = Base64ImageUtils.GetImageStrFromPath(path);
-	    System.out.println(image);
-//		System.out.println(faceService.faceDetect(""));
+	    System.out.println("------------:"+ image);
+		System.out.println(faceService.faceDetect(image));
 //		System.out.println(" 这个是:"+faceService.faceSearch(image, group));
 	}
 

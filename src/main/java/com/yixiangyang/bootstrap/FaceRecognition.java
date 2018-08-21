@@ -15,6 +15,8 @@ public class FaceRecognition {
 	public static void main(String[] args) {
 		String path = "F:\\dd/me.jpg";
 		String image = Base64ImageUtils.GetImageStrFromPath(path);
+		
+		System.out.println("ggg");
 		System.out.println(image);
 		System.out.println("ggg"+faceRecognition("group_1", image, "faceliveness", "3"));
 	}
