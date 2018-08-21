@@ -1,4 +1,4 @@
-package face.com.yixiangyang.service.facerecognition;
+package com.yixiangyang.bootstrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class Sample {
 		// 也可以直接通过jvm启动参数设置此环境变量
 		//System.setProperty("aip.log4j.conf", "path/to/your/log4j.properties");
 		HashMap<String, String> options = new HashMap<String, String>();
-	    options.put("face_field", "age");
+	    options.put("face_field", "age,beauty,expression,faceshape,gender,glasses,landmark,race,quality,facetype");
 	    options.put("max_face_num", "2");
 	    options.put("face_type", "LIVE");
 		// 调用接口
@@ -38,7 +38,7 @@ public class Sample {
 		list.add(req);
 		//在线活体检测
 		//JSONObject res = client.faceverify(list);
-		//JSONObject res = client.detect(Base64ImageUtils.GetImageStrFromPath(path), "BASE64", options);
+		JSONObject res = client.detect(Base64ImageUtils.GetImageStrFromPath(path), "BASE64", options);
 		//组列表查询
 //		HashMap<String, String> options1 = new HashMap<>();
 //		options1.put("start", "0");
@@ -58,17 +58,17 @@ public class Sample {
 //		 options4.put("liveness_control", "LOW");
 //		// options4.put("user_id", "002");
 //		 options4.put("max_user_num", "5");
-//
+////
 //		 String image = Base64ImageUtils.GetImageStrFromPath(path);
 //		 String imageType = "BASE64";
 //		 String groupIdList = "group_1";
 //		 JSONObject res = client.search(image, imageType, groupIdList, options4);
 		//视频活体检测接口接口
-		 String vodeopath = "F:\\dd/gg.mp4";
+//		 String vodeopath = "F:\\dd/gg.mp4";
 //		 JSONObject res2= client.videoSessioncode(null);
 //		 System.out.println(res2.toString());
 //		 System.out.println("411");
-		 JSONObject res = client.videoFaceliveness("S5b7a77a514e44145896709", vodeopath, null);
+//		 JSONObject res = client.videoFaceliveness("S5b7a77a514e44145896709", vodeopath, null);
 		 //client.vo
 		System.out.println(res.toString(2));
 

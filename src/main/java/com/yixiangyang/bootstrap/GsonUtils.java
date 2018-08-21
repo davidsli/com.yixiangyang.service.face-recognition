@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
  */
-package face.com.yixiangyang.service.facerecognition;
+package com.yixiangyang.bootstrap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

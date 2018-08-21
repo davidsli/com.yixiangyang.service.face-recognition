@@ -1,4 +1,4 @@
-package face.com.yixiangyang.service.facerecognition;
+package com.yixiangyang.bootstrap;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
