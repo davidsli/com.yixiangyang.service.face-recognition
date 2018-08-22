@@ -1,5 +1,10 @@
 package com.yixiangyang.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -11,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.yixiangyang.bootstrap.JSONUtil;
 import com.yixiangyang.service.FaceService;
 
@@ -171,8 +178,22 @@ public class FaceController {
 		return new ResponseEntity<Object>(o, HttpStatus.OK);
 	}
 	//视频活体检测
-	public ResponseEntity<Object> videoFaceLiveness(){
-		return null;
+	@RequestMapping(value="/v1/face/video_face_liveness",method=RequestMethod.POST,produces={"application/json"})
+	public ResponseEntity<Object> videoFaceLiveness(@RequestParam("video")MultipartFile file ,@RequestParam("session_id")String sessionId) throws IOException{
+//		file.getBytes();
+//		MultipartFile file = null;
+		InputStream input = file.getInputStream();
+		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		int ch;
+		while((ch = input.read()) != -1) {
+			byteStream.write(ch);
+		}
+		byte data[] = byteStream.toByteArray();
+		byteStream.close();
+		HashMap<String, String> options = new HashMap<String, String>();
+		JSONObject obj = faceService.videoFaceLiveness(data, sessionId, options);
+		Object o = JSONUtil.toObject(obj.toString());
+		return new ResponseEntity<Object>(o, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/v1/face/face_verify",method=RequestMethod.PUT,consumes="application/x-www-form-urlencoded")

@@ -1,5 +1,6 @@
 package com.yixiangyang.bootstrap;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,7 +14,7 @@ public class Sample {
     public static final String API_KEY = "dgpSxKd0VFTrdeVTYGbjTGnM"; //apiKey
     public static final String SECRET_KEY = "ltCMGxFiNRSIYQ1QHQghZUh8BcIqDkkl"; //SecretKey
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		AipFace client = new AipFace(APP_ID, API_KEY, SECRET_KEY);
 
 		// 可选：设置网络连接参数
@@ -63,12 +64,14 @@ public class Sample {
 //		 String imageType = "BASE64";
 //		 String groupIdList = "group_1";
 //		 JSONObject res = client.search(image, imageType, groupIdList, options4);
+		
 		//视频活体检测接口接口
 //		 String vodeopath = "F:\\dd/gg.mp4";
 //		 JSONObject res2= client.videoSessioncode(null);
 //		 System.out.println(res2.toString());
 //		 System.out.println("411");
-//		 JSONObject res = client.videoFaceliveness("S5b7a77a514e44145896709", vodeopath, null);
+//		 JSONObject res = client.videoFaceliveness("S5b7be26086cdd747198934", FileUtil.readFileByBytes(vodeopath), null);
+		 //JSONObject res = client.videoFaceliveness("S5b7a77a514e44145896709", vodeopath, null);
 		 //client.vo
 		System.out.println(res.toString(2));
 
