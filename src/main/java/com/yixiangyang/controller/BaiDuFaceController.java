@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yixiangyang.bootstrap.JSONUtil;
-import com.yixiangyang.service.FaceService;
+import com.yixiangyang.service.BaiDuFaceService;
 
 @RestController
-public class FaceController {
+public class BaiDuFaceController {
 	@Resource
-	private FaceService faceService;
+	private BaiDuFaceService faceService;
 	
 	@RequestMapping(value="/v1/face/facedecet",method=RequestMethod.PUT,consumes="application/x-www-form-urlencoded")
 	public ResponseEntity<Object> facedecet(@RequestParam("image")String image){
@@ -40,7 +40,7 @@ public class FaceController {
 		return new ResponseEntity<Object>(o, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/v1/face/face_search",method=RequestMethod.GET,consumes="application/x-www-form-urlencoded")
+	@RequestMapping(value="/v1/face/face_search",method=RequestMethod.PUT,consumes="application/x-www-form-urlencoded")
 	public ResponseEntity<Object> faceSearch(@RequestParam("image")String image,@RequestParam("group_ids")String groupIds){
 		JSONObject obj = faceService.faceSearch(image, groupIds);
 		Object o = JSONUtil.toObject(obj.toString());
