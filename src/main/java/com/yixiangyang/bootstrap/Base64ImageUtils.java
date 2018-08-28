@@ -11,6 +11,7 @@ import java.net.URL;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+@SuppressWarnings("restriction")
 public class Base64ImageUtils {
 	 /**
      * @Title: GetImageStrFromUrl

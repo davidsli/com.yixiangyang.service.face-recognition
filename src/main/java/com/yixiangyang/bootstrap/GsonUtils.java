@@ -23,7 +23,8 @@ public class GsonUtils {
         return gson.fromJson(json, classOfT);
     }
 
-    public static <T> T fromJson(String json, Type typeOfT) throws JsonParseException {
+    @SuppressWarnings("unchecked")
+	public static <T> T fromJson(String json, Type typeOfT) throws JsonParseException {
         return (T) gson.fromJson(json, typeOfT);
     }
 }

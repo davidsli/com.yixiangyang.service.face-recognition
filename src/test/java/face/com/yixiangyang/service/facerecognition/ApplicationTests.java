@@ -1,7 +1,5 @@
 package face.com.yixiangyang.service.facerecognition;
 
-import java.io.File;
-import java.util.HashMap;
 
 import javax.annotation.Resource;
 
@@ -14,7 +12,6 @@ import com.yixiangyang.bootstrap.Application;
 import com.yixiangyang.bootstrap.Base64ImageUtils;
 import com.yixiangyang.service.BaiDuFaceService;
 import com.yixiangyang.service.FaceService;
-import com.yixiangyang.service.impl.FaceUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={Application.class})
