@@ -77,8 +77,8 @@ public class AuthService {
 
 	public static void main(String[] args) {
 		System.out.println(getAuth());
-		String accessTocke = "24.fdfdabc426c4265cfc5362186382630e.2592000.1537082890.282335-11690564";
-		String sessionKey = "";
+//		String accessTocke = "24.fdfdabc426c4265cfc5362186382630e.2592000.1537082890.282335-11690564";
+//		String sessionKey = "";
 
 	}
 

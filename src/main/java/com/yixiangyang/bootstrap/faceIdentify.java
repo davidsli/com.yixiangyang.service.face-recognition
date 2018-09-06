@@ -2,14 +2,15 @@ package com.yixiangyang.bootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.alibaba.fastjson.JSON;
 
-public class faceRegistered {
+public class faceIdentify {
 
 	public static void main(String[] args) {
-		String path = "F:\\dd/me2.jpg";
+		String path = "F:\\dd/me.jpg";
 		String image = Base64ImageUtils.GetImageStrFromPath(path);
-		System.out.println(createUser("007", "group_1", image, "这个是用户信息", "append"));
+		System.out.println(identify( "group_1", image, "faceliveness", "3"));
 	}
 
 	/**
@@ -21,17 +22,16 @@ public class faceRegistered {
 	 * @param actionType
 	 * @return
 	 */
-	 public static String createUser(String uId, String groupId,String image,String userInfo,String actionType) {
+	 public static String identify( String groupId,String image,String ext_fields,String user_top_num) {
 		        // 请求url
-		        String url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/add";
+		        String url = "https://aip.baidubce.com/rest/2.0/face/v3/detect";
 		        try {
 		            Map<String, Object> map = new HashMap<>();
-		            map.put("user_id", uId);
 		            map.put("group_id", groupId);
 		            map.put("image", image);
 		            map.put("image_type", "BASE64");
-		            map.put("user_info", userInfo);
-		            map.put("action_type", actionType);
+		            map.put("ext_fields", ext_fields);
+		            map.put("user_top_num", user_top_num);
 		            String param = JSON.toJSONString(map);
 
 		            // 注意这里仅为了简化编码每一次请求都去获取access_token，线上环境access_token有过期时间， 客户端可自行缓存，过期后重新获取。

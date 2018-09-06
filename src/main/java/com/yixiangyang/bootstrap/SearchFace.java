@@ -1,8 +1,6 @@
 package com.yixiangyang.bootstrap;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,10 +26,14 @@ public class SearchFace {
 		// 可选：设置log4j日志输出格式，若不设置，则使用默认配置
 		// 也可以直接通过jvm启动参数设置此环境变量
 		//System.setProperty("aip.log4j.conf", "path/to/your/log4j.properties");
+//		HashMap<String, String> options = new HashMap<String, String>();
+//	    options.put("face_field", "age");
+//	    options.put("max_face_num", "5");
+//	    options.put("face_type", "LIVE");
 		HashMap<String, String> options = new HashMap<String, String>();
-	    options.put("face_field", "age");
-	    options.put("max_face_num", "5");
-	    options.put("face_type", "LIVE");
+		options.put("quality_control", "NORMAL");
+	    options.put("liveness_control", "LOW");
+	    options.put("max_user_num", "3");
 		// 调用接口
 		String path = "F:\\dd/me.jpg";
 		String image = Base64ImageUtils.GetImageStrFromPath(path);
@@ -43,6 +45,7 @@ public class SearchFace {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		client.
 
 	}
 }
