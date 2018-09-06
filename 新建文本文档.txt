@@ -1,0 +1,25 @@
+#! /bin/bash
+export PATH=$PATH:/opt/jdk1.8.0_151/bin/:/opt/gradle-4.3.1/bin/
+pid=`ps -ef | grep 'wbuild-customer' | grep -v grep | awk '{print $2}'`
+echo "关闭招商服务$pid"
+kill $pid
+# 发布
+version=2.0
+customer_dir=customer
+haolou_version=release
+rm -rf /opt/haolou/publish/${customer_dir}
+cd /opt/haolou/publish
+echo '克隆招商服务'
+git clone -b "${haolou_version}" git@172.19.12.11:haolou/com.fenzhitech.wbuild.service-customer.git "${customer_dir}" 2>>./error
+echo '清除gradle缓存'
+rm -rf /root/.gradle/caches/modules-2/files-2.1/com.fenzhitech
+rm -rf /root/.gradle/caches/modules-2/metadata-2.31/descriptors/com.fenzhitech
+echo 'build一号楼招商服务'
+cd /opt/haolou/publish/customer
+gradle clean bootRepackage 2>./error
+echo '部署服务'
+rm -rf /opt/haolou/wbuild-customer/wbuild-customer-${version}.jar
+mv /opt/haolou/publish/customer/build/libs/wbuild-customer-${version}.jar /opt/haolou/wbuild-customer/
+echo '启动招商服务'
+nohup java -Duser.timezone=UTC -Xmx512m -Xmx512m -Xmn512m -jar /opt/haolou/wbuild-customer/wbuild-customer-${version}.jar --spring.config.loca
+tion=/opt/haolou/wbuild-customer/wbuild-customer.properties  >/opt/haolou/wbuild-customer/wbuild-customer.log &

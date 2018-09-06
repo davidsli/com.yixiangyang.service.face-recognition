@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.baidu.aip.face.AipFace;
@@ -36,7 +37,12 @@ public class SearchFace {
 		String image = Base64ImageUtils.GetImageStrFromPath(path);
 		String groupIdList = "group_1";
 		JSONObject res = client.search(image, "BASE64", groupIdList, options);
-		System.out.println(res.toString(2));
+		try {
+			System.out.println(res.toString(2));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }

@@ -73,7 +73,7 @@ public class Sample {
 //		 JSONObject res = client.videoFaceliveness("S5b7be26086cdd747198934", FileUtil.readFileByBytes(vodeopath), null);
 		 //JSONObject res = client.videoFaceliveness("S5b7a77a514e44145896709", vodeopath, null);
 		 //client.vo
-		System.out.println(res.toString(2));
+//		System.out.println(res.toString(2));
 
 	}
 
